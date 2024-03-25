@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@dreamhive-lib": ["libs/dreamhive-lib/src/index.ts"],
+      "@dreamhive-lib": ["dist/libs/dreamhive-lib"],
       "@dreamhive-prisma": ["libs/dreamhive-prisma/src/index.ts"]
     }
   },
