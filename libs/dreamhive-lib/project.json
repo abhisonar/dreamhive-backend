@@ -1,0 +1,20 @@
+{
+  "name": "dreamhive-lib",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/dreamhive-lib/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/dreamhive-lib",
+        "tsConfig": "libs/dreamhive-lib/tsconfig.lib.json",
+        "packageJson": "libs/dreamhive-lib/package.json",
+        "main": "libs/dreamhive-lib/src/index.ts",
+        "assets": ["libs/dreamhive-lib/*.md"]
+      }
+    }
+  },
+  "tags": []
+}

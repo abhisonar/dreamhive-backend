@@ -1,0 +1,56 @@
+{
+  "name": "employer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/employer/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/employer",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/employer/src/main.ts",
+        "tsConfig": "apps/employer/tsconfig.app.json",
+        "assets": ["apps/employer/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "employer:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "employer:build:development"
+        },
+        "production": {
+          "buildTarget": "employer:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,10 @@
+FROM node:20.11.0-alpine as base
+
+WORKDIR /app-base
+
+COPY . .
+
+RUN npm install -g pnpm
+
+# Install deps
+RUN pnpm install
