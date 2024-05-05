@@ -26,9 +26,12 @@ export function basePaginatedResponse<T>(
   return baseResponse(paginatedData, statusCode, message);
 }
 
-export function baseErrorResponse(errors: IErrorResponse, statusCode: StatusCodeTypes): IResponse {
+export function baseErrorResponse<T>(
+  errors: IErrorResponse,
+  statusCode: StatusCodeTypes
+): IResponse<T> {
   return {
-    data: {},
+    data: {} as T,
     statusCode: constants[statusCode] as number,
     errors: errors,
   };

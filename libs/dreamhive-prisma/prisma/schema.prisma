@@ -13,10 +13,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  DREAMER
-  EMPLOYER
-  ADMIN
+enum USER_ROLE {
+  USER_ROLE_DREAMER
+  USER_ROLE_EMPLOYER
+  USER_ROLE_ADMIN
 }
 
 type Address {
@@ -26,15 +26,21 @@ type Address {
   zip    String
 }
 
+model EnumCollection {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  code String @unique
+  codeType String
+  displayText String
+}
 model Dreamer {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  role Role @default(DREAMER)
+  role USER_ROLE @default(USER_ROLE_DREAMER)
   appUser AppUser?
 }
 
-model Employer {
+model Employer { 
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  role Role @default(EMPLOYER)
+  role USER_ROLE @default(USER_ROLE_EMPLOYER)
   appUser AppUser?
 }
 

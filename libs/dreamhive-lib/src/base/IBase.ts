@@ -2,10 +2,15 @@ import { Request, Response } from 'express';
 import { IPaginatedResponse, IResponse } from './IResponse';
 
 // Reponse: Reference of reponse object related to request
-export interface BaseRequestModel<ReqBody, ReqParams = {}, ReqQueryParams = {}, ReqResponse = {}>
-  extends Request<ReqParams, ReqResponse, ReqBody, ReqQueryParams> {}
+export type BaseRequestModel<
+  ReqBody,
+  ReqParams = unknown,
+  ReqQueryParams = unknown,
+  ReqResponse = unknown
+> = Request<ReqParams, ReqResponse, ReqBody, ReqQueryParams>;
 
-export interface BaseResponseModel<ResData> extends Response<IResponse<ResData>> {}
+export type BaseResponseModel<ResData> = Response<IResponse<ResData>>;
 
-export interface BasePaginatedResponseModel<ResData>
-  extends Response<IPaginatedResponse<ResData>> {}
+export type BasePaginatedResponseModel<ResData> = Response<
+  IPaginatedResponse<ResData>
+>;
