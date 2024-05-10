@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IPaginatedResponse, IResponse } from './IResponse';
+import { IPaginatedResponse, ResponseHttp } from './IResponse';
 
 // Reponse: Reference of reponse object related to request
 export type BaseRequestModel<
@@ -9,7 +9,7 @@ export type BaseRequestModel<
   ReqResponse = unknown
 > = Request<ReqParams, ReqResponse, ReqBody, ReqQueryParams>;
 
-export type BaseResponseModel<ResData> = Response<IResponse<ResData>>;
+export type BaseResponseModel<ResData> = Response<ResponseHttp<ResData>>;
 
 export type BasePaginatedResponseModel<ResData> = Response<
   IPaginatedResponse<ResData>

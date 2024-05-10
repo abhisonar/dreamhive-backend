@@ -32,38 +32,25 @@ model EnumCollection {
   codeType String
   displayText String
 }
-model Dreamer {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  role USER_ROLE @default(USER_ROLE_DREAMER)
-  appUser AppUser?
-}
 
-model Employer { 
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  role USER_ROLE @default(USER_ROLE_EMPLOYER)
-  appUser AppUser?
-}
-
-model AppUser {
+model AppUserCollection {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   isSuperAdmin Boolean @default(false)
-  person Person?
+  person PersonCollection?
   email String @unique
   password String
-  dreamer Dreamer? @relation(fields: [userRoleId], references: [id])
-  employer Employer? @relation(fields: [userRoleId], references: [id])
-  userRoleId String @unique
+  role USER_ROLE
   createdAt DateTime @default(now())
   updatedAt String?
   deletedAt String?
 }
 
-model Person {
+model PersonCollection {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   firstName String
   middleName String?
   lastName String
-  appUser AppUser @relation(fields: [appUserId], references: [id])
+  appUser AppUserCollection @relation(fields: [appUserId], references: [id])
   appUserId String @unique @db.ObjectId
   address Address?
   profileSrc String?

@@ -1,5 +1,5 @@
 import { BaseRequestModel, BaseResponseModel } from '@dreamhive-lib/base';
-import { baseErrorResponse, baseResponse } from '@dreamhive-lib/function';
+import { baseErrorResponse, baseResponse } from '@dreamhive-lib/function/index';
 import { RegistrationRequest } from '@dreamhive-lib/request';
 
 // prisma client
@@ -9,41 +9,43 @@ const prisma = new PrismaClient();
 
 export const registrationController = async (
   req: BaseRequestModel<RegistrationRequest>,
-  res: BaseResponseModel<RegistrationRequest>
+  res: BaseResponseModel<null>
 ) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password, role } = req.body;
 
   try {
-    const newUser = await prisma.dreamer.create({
+    const isExist = await prisma.appUserCollection.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    if (isExist) {
+      return baseErrorResponse(res, 'HTTP_STATUS_UNPROCESSABLE_ENTITY', {
+        message: 'Email is already exist.',
+      });
+    }
+
+    const newUser = await prisma.appUserCollection.create({
       data: {
-        appUser: {
+        email,
+        password,
+        person: {
           create: {
-            email: email,
-            password: password,
-            person: {
-              create: {
-                firstName: firstName,
-                lastName: lastName,
-              },
-            },
+            firstName,
+            lastName,
           },
         },
+        role,
       },
     });
 
     if (newUser) {
-      return res.send(
-        baseResponse({} as RegistrationRequest, 'HTTP_STATUS_OK')
-      );
+      return baseResponse(res, null, 'HTTP_STATUS_CREATED');
     }
   } catch (err) {
-    return res
-      .status(500)
-      .json(
-        baseErrorResponse(
-          { message: 'Error' },
-          'HTTP_STATUS_INTERNAL_SERVER_ERROR'
-        )
-      );
+    return baseErrorResponse(res, 'HTTP_STATUS_INTERNAL_SERVER_ERROR', {
+      message: '',
+    });
   }
 };

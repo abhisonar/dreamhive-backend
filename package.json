@@ -7,6 +7,7 @@
     "dreamer:build": "nx build dreamer",
     "employer:serve": "nx serve employer",
     "employer:build": "nx build employer",
+    "authentication:serve": "nx serve authentication",
     "dreamhive-lib:build": "nx build dreamhive-lib",
     "prisma-update": "nx run dreamhive-prisma:generate-types && nx run dreamhive-prisma:push"
   },

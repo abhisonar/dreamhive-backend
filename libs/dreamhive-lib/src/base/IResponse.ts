@@ -1,6 +1,6 @@
 import { constants } from 'http2';
 
-export interface IResponse<T = {}> {
+export interface ResponseHttp<T = Record<string, never>> {
   data: T;
   statusCode: number;
   message?: string;
