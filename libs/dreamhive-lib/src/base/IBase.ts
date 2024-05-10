@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IPaginatedResponse, ResponseHttp } from './IResponse';
+import { IPaginatedResponse, ResponseHttp } from './ResponseHttp';
 
 // Reponse: Reference of reponse object related to request
 export type BaseRequestModel<

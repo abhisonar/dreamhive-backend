@@ -1,2 +1,2 @@
-export * from './IResponse';
+export * from './ResponseHttp';
 export * from './IBase';
