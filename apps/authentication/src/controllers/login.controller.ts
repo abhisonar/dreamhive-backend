@@ -6,5 +6,5 @@ export const loginController = (
   req: BaseRequestModel<RegistrationRequest>,
   res: BaseResponseModel<null>
 ) => {
-  return baseResponse(res, null, 'HTTP_STATUS_OK');
+  return baseResponse(res, 'HTTP_STATUS_OK', null );
 };

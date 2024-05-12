@@ -7,3 +7,5 @@ export interface RegistrationRequest {
   password: string;
   role: USER_ROLE;
 }
+
+export type RegistrationRequestType = keyof RegistrationRequest;

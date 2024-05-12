@@ -1,2 +1,2 @@
-export * from './LoginRequest';
-export * from './RegistrationRequest';
+export * from './login.request';
+export * from './registration.request';

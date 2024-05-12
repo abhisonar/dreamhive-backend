@@ -1,10 +1,11 @@
 import { constants } from 'http2';
+import { ZodIssue } from 'zod';
 
 export interface ResponseHttp<T = Record<string, never>> {
   data: T;
   statusCode: number;
   message?: string;
-  errors?: IErrorResponse;
+  error?: ErrorResponseHttp;
 }
 
 export interface IPaginatedResponse<T> extends IPagination {
@@ -20,13 +21,12 @@ export interface IPagination {
 
 export type StatusCodeTypes = keyof typeof constants;
 
-export interface IErrorResponse {
+export interface ErrorResponseHttp {
   message?: string;
-  validationErrors?: { [field: string]: string };
-  subErrors?: ISubErrorReponse[];
+  issues?: Array<ValidationErrorHttp>;
+  validationErrors?: Array<ValidationErrorHttp>;
+  name?: string;
 }
 
-export interface ISubErrorReponse {
-  message: string;
-  code?: string;
-}
+type ValidationErrorHttp = ZodIssue
+

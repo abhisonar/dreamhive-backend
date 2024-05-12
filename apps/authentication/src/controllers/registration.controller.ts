@@ -3,7 +3,7 @@ import { baseErrorResponse, baseResponse } from '@dreamhive-lib/function/index';
 import { RegistrationRequest } from '@dreamhive-lib/request';
 
 // prisma client
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, USER_ROLE } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -28,6 +28,7 @@ export const registrationController = async (
 
     const newUser = await prisma.appUserCollection.create({
       data: {
+        isSuperAdmin: role === USER_ROLE.USER_ROLE_ADMIN,
         email,
         password,
         person: {
@@ -41,11 +42,9 @@ export const registrationController = async (
     });
 
     if (newUser) {
-      return baseResponse(res, null, 'HTTP_STATUS_CREATED');
+      return baseResponse(res, 'HTTP_STATUS_CREATED', null);
     }
   } catch (err) {
-    return baseErrorResponse(res, 'HTTP_STATUS_INTERNAL_SERVER_ERROR', {
-      message: '',
-    });
+    return baseErrorResponse(res, 'HTTP_STATUS_INTERNAL_SERVER_ERROR', err);
   }
 };
