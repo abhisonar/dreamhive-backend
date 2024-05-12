@@ -28,5 +28,5 @@ export interface ErrorResponseHttp {
   name?: string;
 }
 
-type ValidationErrorHttp = ZodIssue
+type ValidationErrorHttp = ZodIssue;
 

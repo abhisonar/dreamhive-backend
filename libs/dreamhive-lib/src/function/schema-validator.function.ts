@@ -1,6 +1,6 @@
 import { ZodError, ZodObject } from 'zod';
 import { SchemaValidatorType } from '../type';
-import { BaseRequestModel, BaseResponseModel } from '../base/IBase';
+import { BaseRequestModel, BaseResponseModel } from '../base/base.http';
 import { NextFunction } from 'express';
 import { baseErrorResponse } from './base/reponse.function';
 
