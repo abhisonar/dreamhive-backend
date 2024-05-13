@@ -1,6 +1,7 @@
 import { BaseRequestModel, BaseResponseModel } from '@dreamhive-lib/base';
 import { baseErrorResponse, baseResponse } from '@dreamhive-lib/function/index';
 import { RegistrationRequest } from '@dreamhive-lib/request';
+import argon from 'argon2'
 
 // prisma client
 import { PrismaClient, USER_ROLE } from '@prisma/client';
@@ -26,11 +27,13 @@ export const registrationController = async (
       });
     }
 
+    const hashedPassword = await argon.hash(password);
+
     const newUser = await prisma.appUserCollection.create({
       data: {
         isSuperAdmin: role === USER_ROLE.USER_ROLE_ADMIN,
         email,
-        password,
+        password: hashedPassword,
         person: {
           create: {
             firstName,
