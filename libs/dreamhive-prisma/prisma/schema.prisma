@@ -43,6 +43,7 @@ model AppUserCollection {
   createdAt DateTime @default(now())
   updatedAt String?
   deletedAt String?
+  lastLoginAt String?
 }
 
 model PersonCollection {

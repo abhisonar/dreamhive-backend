@@ -16,8 +16,7 @@
     "strictNullChecks": false,
     "baseUrl": ".",
     "paths": {
-      "@dreamhive-lib/*": ["libs/dreamhive-lib/src/*"],
-      "@dreamhive-prisma/*": ["libs/dreamhive-prisma/src/index.ts"]
+      "@dreamhive-lib/*": ["libs/dreamhive-lib/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

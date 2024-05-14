@@ -1,7 +1,7 @@
 import { BaseRequestModel, BaseResponseModel } from '@dreamhive-lib/base';
 import { baseErrorResponse, baseResponse } from '@dreamhive-lib/function/index';
 import { RegistrationRequest } from '@dreamhive-lib/request';
-import argon from 'argon2'
+import argon from 'argon2';
 
 // prisma client
 import { PrismaClient, USER_ROLE } from '@prisma/client';
