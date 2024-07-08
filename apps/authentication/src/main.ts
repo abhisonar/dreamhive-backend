@@ -1,4 +1,4 @@
-import { registerAppRoutes } from '@dreamhive-lib/function/index';
+import { registerAppRoutes } from '@dreamhive-lib/function';
 import express from 'express';
 
 const host = process.env.HOST ?? 'localhost';

@@ -1,5 +1,5 @@
 import { BaseRequestModel, BaseResponseModel } from '@dreamhive-lib/base';
-import { baseErrorResponse, baseResponse } from '@dreamhive-lib/function/index';
+import { baseErrorResponse, baseResponse } from '@dreamhive-lib/function';
 import { RegistrationRequest } from '@dreamhive-lib/request';
 import argon from 'argon2';
 

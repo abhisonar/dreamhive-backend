@@ -16,7 +16,13 @@
     "strictNullChecks": false,
     "baseUrl": ".",
     "paths": {
-      "@dreamhive-lib/*": ["libs/dreamhive-lib/src/*"]
+      "@dreamhive-lib/base": ["libs/dreamhive-lib/src/base/index.ts"],
+      "@dreamhive-lib/constant": ["libs/dreamhive-lib/src/constant/index.ts"],
+      "@dreamhive-lib/enums": ["libs/dreamhive-lib/src/enums/index.ts"],
+      "@dreamhive-lib/function": ["libs/dreamhive-lib/src/function/index.ts"],
+      "@dreamhive-lib/request": ["libs/dreamhive-lib/src/request/index.ts"],
+      "@dreamhive-lib/response": ["libs/dreamhive-lib/src/response/index.ts"],
+      "@dreamhive-lib/type": ["libs/dreamhive-lib/src/type/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

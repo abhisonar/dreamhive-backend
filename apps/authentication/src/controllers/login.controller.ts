@@ -1,13 +1,12 @@
 import { BaseRequestModel, BaseResponseModel } from '@dreamhive-lib/base';
 import { LoginRequest } from '@dreamhive-lib/request';
-import { baseErrorResponse, baseResponse, getValueFromToken } from '@dreamhive-lib/function/index';
-import { TOKEN_SECRET } from '@dreamhive-lib/constant/index';
+import { baseErrorResponse, baseResponse, getValueFromToken } from '@dreamhive-lib/function';
+import { TOKEN_SECRET } from '@dreamhive-lib/constant';
 import argon from 'argon2';
 
 // prisma client
 import { PrismaClient } from '@prisma/client';
-import { generateJwtToken } from '@dreamhive-lib/function/jwt.function';
-import { getCurrentUTCDateTime } from '@dreamhive-lib/function/date.function';
+import { generateJwtToken, getCurrentUTCDateTime } from '@dreamhive-lib/function';
 
 const prisma = new PrismaClient();
 
